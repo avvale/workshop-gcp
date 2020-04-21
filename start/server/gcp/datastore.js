@@ -54,7 +54,7 @@ function create(kind, data)
     const key = ds.key(kind);
 
     const dsData = [];
-    for (index in data)
+    for (let index in data)
     { 
         dsData.push({
             name: index,
