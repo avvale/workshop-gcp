@@ -1,5 +1,8 @@
 # Copyright 2020 Techedge España.
 
+echo "Creating App Engine app"
+gcloud app create --region "europe-west2"
+
 echo "Making bucket: gs://$DEVSHELL_PROJECT_ID-media"
 gsutil mb gs://$DEVSHELL_PROJECT_ID-media
 
