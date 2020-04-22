@@ -9,6 +9,7 @@ export QUEUE_PERSISTENCE_SPANNER=queue.persistence.spanner
 export QUEUE_API_VISION=queue.api.vision
 export QUEUE_API_LANGUAGE=queue.api.language
 export GCLOUD_REGION=europe-west2
+export CF_BUCKET_HANDLER=bucketHandler
 
 echo "Creating App Engine app"
 gcloud app create --region $GCLOUD_REGION
@@ -32,7 +33,7 @@ gcloud pubsub topics create $QUEUE_API_LANGUAGE
 
 gsutil notification create -t $QUEUE_PERSISTENCE_STORAGE -e OBJECT_FINALIZE -f json gs://$GCLOUD_BUCKET
 
-echo "Deploy bucketTrigger cloud function with bucket trigger"
-gcloud functions deploy bucketTrigger --runtime nodejs8 --set-env-vars PROJECT_ID=$GCLOUD_PROJECT --trigger-event google.storage.object.finalize --trigger-topic $QUEUE_PERSISTENCE_STORAGE --source ./setup/bucket-handler --region $GCLOUD_REGION
+echo "Deploy $CF_BUCKET_HANDLER cloud function with bucket trigger"
+gcloud functions deploy $CF_BUCKET_HANDLER --runtime nodejs8 --set-env-vars PROJECT_ID=$GCLOUD_PROJECT --trigger-topic $QUEUE_PERSISTENCE_STORAGE --source ./setup/bucket-handler --region $GCLOUD_REGION
 
 echo "Project ID: $GCLOUD_PROJECT"

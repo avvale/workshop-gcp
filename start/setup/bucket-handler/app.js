@@ -1,5 +1,5 @@
 // get pub sub functionality
-const publisher = require('./pubsub');
+const publisher = require('pubsub');
 
 exports.bucketHandler = (data, context) => 
 {
