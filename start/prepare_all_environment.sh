@@ -21,7 +21,7 @@ echo "Creating Cloud Pub/Sub topic"
 gcloud pubsub topics create bucket-actions
 
 echo "Load bucket trigger cloud function"
-node setup/bucket-trigger.js
+node setup/bucket-trigger-cloud-function.js
 
 echo "Deploy bucketTrigger cloud function"
 gcloud functions deploy bucketTrigger --runtime nodejs8 --trigger-resource $DEVSHELL_PROJECT_ID-media --trigger-event google.storage.object.finalize
