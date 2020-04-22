@@ -28,7 +28,8 @@ exports.bucketHandler = (data, context) =>
     console.log(`  selfLink: ${file.selfLink}`);
 
     // test
-    // console.log(process.env.FOO);
-    console.log(process.env);
+    console.log(data.body);
+    console.log(context.body);
+    console.log(dd);
 
 };
