@@ -18,8 +18,7 @@ function publishMessage(data, topic)
     if (topic === 'queue.api.language')   return languageTopic.publish(dataBuffer);
 }
 
-// [START exports]
+// exports
 module.exports = {
     publishMessage
 };
-// [END exports]
