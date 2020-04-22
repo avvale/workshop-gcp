@@ -17,4 +17,13 @@ npm update
 echo "Creating Datastore entities"
 node setup/datastore-entities.js
 
+echo "Creating Cloud Pub/Sub topic"
+gcloud pubsub topics create bucket-actions
+
+echo "Load bucket trigger cloud function"
+node setup/bucket-trigger.js
+
+echo "Deploy bucketTrigger cloud function"
+gcloud functions deploy bucketTrigger --runtime nodejs8 --trigger-resource $DEVSHELL_PROJECT_ID-media --trigger-event google.storage.object.finalize
+
 echo "Project ID: $DEVSHELL_PROJECT_ID"
