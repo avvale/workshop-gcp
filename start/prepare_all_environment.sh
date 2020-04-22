@@ -36,4 +36,6 @@ gsutil notification create -t $QUEUE_PERSISTENCE_STORAGE -e OBJECT_FINALIZE -f j
 echo "Deploy $CF_BUCKET_HANDLER cloud function with bucket trigger"
 gcloud functions deploy $CF_BUCKET_HANDLER --runtime nodejs8 --set-env-vars PROJECT_ID=$GCLOUD_PROJECT,QUEUE_API_LANGUAGE=$QUEUE_API_LANGUAGE,QUEUE_API_VISION=$QUEUE_API_VISION --trigger-topic $QUEUE_PERSISTENCE_STORAGE --source ./setup/bucket-handler --region $GCLOUD_REGION
 
+gcloud functions deploy $CF_BUCKET_HANDLER --runtime nodejs8 --set-env-vars PROJECT_ID=$GCLOUD_PROJECT,QUEUE_API_LANGUAGE=$QUEUE_API_LANGUAGE,QUEUE_API_VISION=$QUEUE_API_VISION --trigger-bucket $GCLOUD_BUCKET --source ./setup/bucket-handler --region $GCLOUD_REGION
+
 echo "Project ID: $GCLOUD_PROJECT"
