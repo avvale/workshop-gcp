@@ -1,13 +1,9 @@
 {
-    "name": "workshop-gcp",
+    "name": "bucket-handler",
     "version": "1.0.0",
-    "description": "Workshop for GCP",
+    "description": "Dependencies for bucket-handler cloud function",
     "repository": "UNKNOWN",
     "private": true,
-    "scripts": {
-        "start": "node server/app.js"
-    },
-    "license": "Apache-2.0",
     "dependencies": {
         "@google-cloud/datastore": "~4.3.0",
         "@google-cloud/language": "^3.3.0",
@@ -21,11 +17,5 @@
         "nconf": "~0.10.0",
         "prompt": "~1.0.0",
         "pug": "2.0.4"
-    },
-    "devDependencies": {
-        "nodejs-repo-tools": "git+https://git@github.com/GoogleCloudPlatform/nodejs-repo-tools.git"
-    },
-    "engines": {
-        "node": ">=4.3.2"
     }
 }
