@@ -2,6 +2,9 @@
 // Call pub/sub GCP library
 const { PubSub } = require('@google-cloud/pubsub');
 
+// load config utility
+const config = require('./config');
+
 // Call pub/sub GCP library
 const pubsub = new PubSub({
     projectId: config.get(process.env.PROJECT_ID)
