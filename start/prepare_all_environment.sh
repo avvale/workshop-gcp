@@ -24,6 +24,6 @@ echo "Load bucket trigger cloud function"
 node setup/bucket-trigger-cloud-function.js
 
 echo "Deploy bucketTrigger cloud function"
-gcloud functions deploy bucketTrigger --runtime nodejs8 --trigger-resource $DEVSHELL_PROJECT_ID-media --trigger-event google.storage.object.finalize --source ./setup/bucket-trigger-cloud-function.js --region "europe-west2"
+gcloud functions deploy bucketTrigger --runtime nodejs8 --trigger-resource $DEVSHELL_PROJECT_ID-media --trigger-event google.storage.object.finalize --source ./setup/bucket-trigger-cloud-function --region "europe-west2"
 
 echo "Project ID: $DEVSHELL_PROJECT_ID"
