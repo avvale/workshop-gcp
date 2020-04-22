@@ -2,23 +2,20 @@
 // Call pub/sub GCP library
 const { PubSub } = require('@google-cloud/pubsub');
 
-// load config utility
-const config = require('./config');
-
 // Call pub/sub GCP library
 const pubsub = new PubSub({
-    projectId: config.get(process.env.PROJECT_ID)
+    projectId: process.env.PROJECT_ID
 });
 
-const visionTopic       = pubsub.topic('queue.api.vision');
-const languageTopic     = pubsub.topic('queue.api.language');
+const visionTopic       = pubsub.topic(process.env.QUEUE_API_VISION);
+const languageTopic     = pubsub.topic(process.env.QUEUE_API_LANGUAGE);
 
 function publishMessage(data, topic)
 {
     const dataBuffer = Buffer.from(JSON.stringify(data));
 
-    if (topic === 'queue.api.vision')     return visionTopic.publish(dataBuffer);
-    if (topic === 'queue.api.language')   return languageTopic.publish(dataBuffer);
+    if (topic === process.env.QUEUE_API_VISION)     return visionTopic.publish(dataBuffer);
+    if (topic === process.env.QUEUE_API_LANGUAGE)   return languageTopic.publish(dataBuffer);
 }
 
 // exports
